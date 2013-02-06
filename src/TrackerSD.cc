@@ -38,7 +38,8 @@ HCE->AddHitsCollection(HCID,trackerCollection);
 G4bool TrackerSD::ProcessHits(G4Step* aStep,G4TouchableHistory*)
 {
 
-if (aStep->GetTrack()->GetDynamicParticle()->GetDefinition()->GetParticleName() == "opticalphoton")
+/*if (aStep->GetTrack()->GetDynamicParticle()->GetDefinition()->GetParticleName() == "opticalphoton")*/
+if(aStep->GetTrack()->GetTrackID()==1)
  {
 		
 		TrackerHit* newHit = new TrackerHit();

@@ -38,7 +38,8 @@ HCE->AddHitsCollection(HCID,trackerCollection);
 G4bool TrackerSD::ProcessHits(G4Step* aStep,G4TouchableHistory*)
 {
 
-if (aStep->GetTrack()->GetDynamicParticle()->GetDefinition()->GetParticleName() == "opticalphoton")
+/*if (aStep->GetTrack()->GetDynamicParticle()->GetDefinition()->GetParticleName() == "opticalphoton")*/
+if(aStep->GetTrack()->GetTrackID==1)
  {
 		
 		TrackerHit* newHit = new TrackerHit();
@@ -47,7 +48,7 @@ if (aStep->GetTrack()->GetDynamicParticle()->GetDefinition()->GetParticleName() 
 		newHit->SetPos(aStep->GetPostStepPoint()->GetPosition());
 		newHit->SetID(aStep->GetTrack()->GetDynamicParticle()->GetDefinition()->GetParticleName());
 		newHit->SetEn(aStep->GetTrack()->GetKineticEnergy());
-		cname = aTrack->GetTrack()->GetCreatorProcess()->GetProcessName();
+		cname = aStep->GetTrack()->GetCreatorProcess()->GetProcessName();
                 totalEnergyOfTheEvent = aStep->GetTrack()->GetKineticEnergy();
 		name = aStep->GetTrack()->GetDynamicParticle()->GetDefinition()->GetParticleName();
                 
