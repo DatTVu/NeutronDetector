@@ -1,0 +1,38 @@
+#ifndef ROOTIO_H
+#define ROOTIO_H
+
+#include "TROOT.h"
+#include "TFile.h"
+#include "TH2.h"
+#include "TF2.h"
+#include "TSystem.h"
+
+#include "G4Run.hh"
+#include "TrackerHit.hh"
+
+class RootIO
+{
+	public:	
+		virtual ~RootIO();
+		static RootIO* GetInstance();
+		void SetDirName(G4String name);
+		void OpenFile(const G4Run* thisRun);
+		void Average(int events);		
+		void CloseFile();
+		void InPhotons(G4int);
+		void WriteEnergy(G4double energy);
+
+	protected:
+				RootIO();
+	private:
+				TFile* fo;
+				FILE* xcl;
+				char fname[256];
+				char fname2[256];
+				TH2F* e_histo;
+				TH1F* d_histo;
+				TH1D* e1d_histo;
+				long photons[10000][20];
+				G4String dirname;
+};
+#endif // INCLUDE_ROOTIO_HH
