@@ -182,6 +182,11 @@ G4VPhysicalVolume* B1DetectorConstruction::Construct()
                     0,                       //copy number
                     checkOverlaps);          //overlaps checking
 
+  G4SDManager *SDman = G4SDManager::GetSDMpointer();
+  TrackerSD* sd = new TrackerSD("sd");
+  SDman->AddNewDetector(sd);
+  logicEnv->SetSensitiveDetector(sd);
+
 
 // Wrap up method
 const G4int NUM = 2;
@@ -225,10 +230,10 @@ G4OpticalSurface* Wrap = new G4OpticalSurface("Wrap");
                     0,                       //copy number
                     checkOverlaps);          //overlaps checking
 // Set sensitive detector  
-G4SDManager *SDman = G4SDManager::GetSDMpointer();
+/*G4SDManager *SDman = G4SDManager::GetSDMpointer();
   TrackerSD* sd = new TrackerSD("sd");
   SDman->AddNewDetector(sd);
-  logicShape2->SetSensitiveDetector(sd);
+  logicShape2->SetSensitiveDetector(sd);*/
 
 //..............................................................................  
 //Wrap shape2

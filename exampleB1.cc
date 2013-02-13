@@ -2,6 +2,7 @@
 #include "B1PrimaryGeneratorAction.hh"
 #include "B1RunAction.hh"
 #include "B1EventAction.hh"
+#include "B1StackingAction.hh"
 #include "B1SteppingAction.hh"
 #include "B1PhysicsList.hh"
 #include "QGSP_BERT.hh"
@@ -36,6 +37,7 @@ int main(int argc,char** argv)
   runManager->SetUserAction(new B1SteppingAction);     
   runManager->SetUserAction(new B1EventAction);
   runManager->SetUserAction(new B1RunAction);
+  runManager->SetUserAction(new B1StackingAction);
   runManager->Initialize();
   
 #ifdef G4VIS_USE
