@@ -37,7 +37,7 @@ B1PrimaryGeneratorAction::B1PrimaryGeneratorAction()
   G4ParticleDefinition* particle
     = particleTable->FindParticle("neutron");
   fParticleGun->SetParticleDefinition(particle);
-  fParticleGun->SetParticleEnergy(100*MeV);
+  fParticleGun->SetParticleEnergy(5*MeV);
   fParticleGun->SetParticleMomentumDirection(G4ThreeVector(1.,0.,0.));
   
   fgInstance = this;

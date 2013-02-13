@@ -44,11 +44,10 @@ B1PhysicsList::B1PhysicsList()
   optPhys->SetScintillationByParticleType(false);
   optPhys->SetScintillationYieldFactor(1.0);
   optPhys->SetScintillationExcitationRatio(0.0);
-  optPhys->SetMaxBetaChangePerStep(10.0);
-  optPhys->SetTrackSecondariesFirst(kCerenkov,true);
+//  optPhys->SetMaxBetaChangePerStep(10.0);
+//  optPhys->SetTrackSecondariesFirst(kCerenkov,true);
 
-  
-    
+     
 }
 
 B1PhysicsList::~B1PhysicsList()
