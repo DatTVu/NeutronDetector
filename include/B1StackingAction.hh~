@@ -15,7 +15,7 @@ class B1StackingAction : public G4UserStackingAction
     virtual void PrepareNewEvent();
 
   private:
-    G4int gammaCounter;
+    int gammaCounter;
 };
 
 #endif

@@ -38,14 +38,18 @@ B1PhysicsList::B1PhysicsList()
   // Optical Physics
   G4OpticalPhysics* optPhys = new G4OpticalPhysics();
   RegisterPhysics(optPhys);
-  optPhys->SetTrackSecondariesFirst(kScintillation,true);  
-  optPhys->SetScintillationYieldFactor(1.0);
-  optPhys->SetMaxNumPhotonsPerStep(1000);
-  optPhys->SetScintillationByParticleType(false);
   optPhys->SetScintillationYieldFactor(1.0);
   optPhys->SetScintillationExcitationRatio(0.0);
-//  optPhys->SetMaxBetaChangePerStep(10.0);
-//  optPhys->SetTrackSecondariesFirst(kCerenkov,true);
+
+  optPhys->SetMaxNumPhotonsPerStep(100);
+  optPhys->SetMaxBetaChangePerStep(10.0);
+
+  optPhys->SetTrackSecondariesFirst(kCerenkov,true);
+  optPhys->SetTrackSecondariesFirst(kScintillation,true);  
+  
+  //optPhys->SetScintillationByParticleType(false);
+  
+  
 
      
 }

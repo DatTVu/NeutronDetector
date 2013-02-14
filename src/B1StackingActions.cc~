@@ -4,6 +4,7 @@
 #include "G4ParticleTypes.hh"
 #include "G4Track.hh"
 
+
 B1StackingAction::B1StackingAction()
 : gammaCounter(0)
 {;}
@@ -17,9 +18,18 @@ B1StackingAction::ClassifyNewTrack(const G4Track * aTrack)
   if(aTrack->GetDefinition()==G4OpticalPhoton::OpticalPhotonDefinition())
   { // particle is optical photon
     if(aTrack->GetParentID()>0)
-    { // particle is secondary
-      gammaCounter++;
-    }
+    /*{ // particle is secondary
+    if(aTrack->GetCreatorProcess()->GetProcessName()=="Scintillation")
+	{scinCounter++;}
+    else if(aTrack->GetCreatorProcess()->GetProcessName()=="Cerenkov")
+	{gammaCounter++;}*/
+// keeping track of optical photon energy
+/*
+G4int ke=aStep->GetTrack()->GetKineticEnergy());
+*/
+    gammaCounter ++;
+    
+    
   }
 
   return fUrgent;
@@ -27,8 +37,10 @@ B1StackingAction::ClassifyNewTrack(const G4Track * aTrack)
 
 void B1StackingAction::NewStage()
 {
-  G4cout << "Number of gamma produces in this event : "
+  G4cout << "Number of Cerenkov photons produces in this event : "
          << gammaCounter << G4endl;
+  /*G4cout << "Number of Scintillation photons produces in this event: "
+         << scinCounter << G4endl;*/
 }
 
 void B1StackingAction::PrepareNewEvent()

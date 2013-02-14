@@ -37,7 +37,8 @@ HCE->AddHitsCollection(HCID,trackerCollection);
 //..............................................................................
 G4bool TrackerSD::ProcessHits(G4Step* aStep,G4TouchableHistory*)
 {
-if (aStep->GetTrack()->GetDynamicParticle()->GetDefinition()->GetParticleName() == "alpha")
+if (aStep->GetTrack()->GetDynamicParticle()->GetDefinition()->GetParticleName() == "opticalphoton")
+
 //if(aStep->GetTrack()->GetTrackID()==1)
  {
 		
@@ -71,16 +72,16 @@ void TrackerSD::EndOfEvent(G4HCofThisEvent*)
 		(*trackerCollection)[i]->Print();
 	}
 	std::ofstream fout;
-  fout.open("process_run11.txt", std::fstream::app);
+  fout.open("process_run13.txt", std::fstream::app);
   fout <<cname<< " " <<std::endl;;
   fout.close();
-fout.open("alphadata100MeV_run11.txt", std::fstream::app);
+fout.open("alphadata100MeV_run13.txt", std::fstream::app);
 	fout <<name<< " "<<std::endl;;
   fout.close();
-  fout.open("number100MeV_run11.txt", std::fstream::app);
+  fout.open("number100MeV_run13.txt", std::fstream::app);
 	fout <<NbHits<< " "<<std::endl;;
   fout.close();
-  fout.open("energydata100MeV_run11.txt", std::fstream::app);
+  fout.open("energydata100MeV_run13.txt", std::fstream::app);
 	fout <<totalEnergyOfTheEvent/eV<< " "<<std::endl;;
   fout.close();
 }
