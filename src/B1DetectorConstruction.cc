@@ -1,5 +1,5 @@
 #include "B1DetectorConstruction.hh"
-#include "B1SteppingAction.hh"
+//#include "B1SteppingAction.hh"
    
 #include "G4RunManager.hh"
 #include "G4NistManager.hh"
@@ -249,8 +249,8 @@ G4OpticalSurface* Wrap1 = new G4OpticalSurface("Wrap");
 	 Wrap1->SetModel(glisur);
  	 Wrap1->SetMaterialPropertiesTable(WrapProperty1);
                 
-  B1SteppingAction* steppingAction = B1SteppingAction::Instance(); 
-  steppingAction->SetVolume(logicShape2);
+  /*B1SteppingAction* steppingAction =       B1SteppingAction::Instance(); 
+  steppingAction->SetVolume(logicShape2);*/
    
   return physWorld;
 }

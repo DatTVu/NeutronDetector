@@ -19,7 +19,6 @@ TrackerSD::TrackerSD(G4String name): G4VSensitiveDetector(name)
 aCount = 0;
 G4String SDname;
 collectionName.insert(SDname="TrackerHitsCollection");
-totalEnergyOfTheEvent = 0;
 }
 //............
 TrackerSD::~TrackerSD()
@@ -37,20 +36,16 @@ HCE->AddHitsCollection(HCID,trackerCollection);
 //..............................................................................
 G4bool TrackerSD::ProcessHits(G4Step* aStep,G4TouchableHistory*)
 {
-if (aStep->GetTrack()->GetDynamicParticle()->GetDefinition()->GetParticleName() == "alpha")
-//if(aStep->GetTrack()->GetTrackID()==1)
+if (aStep == 0) return false;
+if (aStep->GetTrack()->GetDynamicParticle()->GetDefinition()->GetParticleName() == "opticalphoton")
+
  {
 		
 		TrackerHit* newHit = new TrackerHit();
-                newHit-> SetTrackID (aStep -> GetTrack() -> GetTrackID());
- 		
-		newHit->SetPos(aStep->GetPostStepPoint()->GetPosition());
-		newHit->SetID(aStep->GetTrack()->GetDynamicParticle()->GetDefinition()->GetParticleName());
-		newHit->SetEn(aStep->GetTrack()->GetKineticEnergy());
-		cname = aStep->GetTrack()->GetCreatorProcess()->GetProcessName();
-                totalEnergyOfTheEvent = aStep->GetTrack()->GetKineticEnergy();
-		name = aStep->GetTrack()->GetDynamicParticle()->GetDefinition()->GetParticleName();
-                
+                /*cname = aStep->GetTrack()->GetCreatorProcess()->GetProcessName();*/
+                ke = aStep->GetTrack()->GetKineticEnergy();
+		/*name = aStep->GetTrack()->GetDynamicParticle()->GetDefinition()->GetParticleName();*/
+                            
  		trackerCollection->insert(newHit );
 	}		
 else
@@ -71,17 +66,17 @@ void TrackerSD::EndOfEvent(G4HCofThisEvent*)
 		(*trackerCollection)[i]->Print();
 	}
 	std::ofstream fout;
-  fout.open("process_run11.txt", std::fstream::app);
+  /*fout.open("process_run14.txt", std::fstream::app);
   fout <<cname<< " " <<std::endl;;
+  fout.close();*/
+  /*fout.open("alphadata100MeV_run13.txt", std::fstream::app);
+	fout <<name<< " "<<std::endl;;*/
   fout.close();
-fout.open("alphadata100MeV_run11.txt", std::fstream::app);
-	fout <<name<< " "<<std::endl;;
-  fout.close();
-  fout.open("number100MeV_run11.txt", std::fstream::app);
+  fout.open("numberdata_run15.txt", std::fstream::app);
 	fout <<NbHits<< " "<<std::endl;;
   fout.close();
-  fout.open("energydata100MeV_run11.txt", std::fstream::app);
-	fout <<totalEnergyOfTheEvent/eV<< " "<<std::endl;;
+  fout.open("energydata_run15.txt", std::fstream::app);
+	fout <<ke/eV<< " "<<std::endl;;
   fout.close();
 }
 

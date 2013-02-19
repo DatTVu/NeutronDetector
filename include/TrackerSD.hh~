@@ -19,16 +19,16 @@ class TrackerSD : public G4VSensitiveDetector
       TrackerSD(G4String, G4int);
      ~TrackerSD();
 
-      void Initialize(G4HCofThisEvent*);
+      virtual void Initialize(G4HCofThisEvent*);
       G4bool ProcessHits(G4Step*, G4TouchableHistory*);
-      void EndOfEvent(G4HCofThisEvent*);
+      virtual void EndOfEvent(G4HCofThisEvent*);
       void Clear();
       void DrawAll();
       void PrintAll();
  private:
  TrackerHitsCollection* trackerCollection;
  int aCount;
- G4double totalEnergyOfTheEvent;
+ G4double ke;
  G4String name;
  G4String cname;
  std::fstream* output;
