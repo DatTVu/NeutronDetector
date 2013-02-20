@@ -1,6 +1,4 @@
 #include "B1DetectorConstruction.hh"
-//#include "B1SteppingAction.hh"
-   
 #include "G4RunManager.hh"
 #include "G4NistManager.hh"
 #include "G4Box.hh"
@@ -62,9 +60,9 @@ PTP->AddElement(H , natoms=14);
     
   G4double fractionmass;
   G4Material* GlassB = new G4Material("GlassB", 1.687941408*g/cm3, 3);
-  GlassB->AddMaterial(boron10, fractionmass=45*perCent);
+  GlassB->AddMaterial(boron10, fractionmass=20*perCent);
   GlassB->AddMaterial(PyrexGlass, fractionmass=10*perCent);
-  GlassB->AddMaterial(PTP, fractionmass=45*perCent);
+  GlassB->AddMaterial(PTP, fractionmass=70*perCent);
   
 //.....................................................................
 
@@ -116,7 +114,7 @@ PTP->AddElement(H , natoms=14);
   myMPT1->AddConstProperty("SLOWTIMECONSTANT",3.7*ns);
   myMPT1->AddConstProperty("YIELDRATIO",0.8);
   
-  GlassB->SetMaterialPropertiesTable(myMPT1);
+  PTP->SetMaterialPropertiesTable(myMPT1);
 
 }
 

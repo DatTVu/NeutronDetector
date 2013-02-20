@@ -28,7 +28,7 @@ class TrackerSD : public G4VSensitiveDetector
  private:
  TrackerHitsCollection* trackerCollection;
  int aCount;
- G4double ke;
+ G4double energy;
  G4String name;
  G4String cname;
  std::fstream* output;

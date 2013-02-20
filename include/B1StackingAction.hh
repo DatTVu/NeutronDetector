@@ -16,7 +16,10 @@ class B1StackingAction : public G4UserStackingAction
 
   private:
     int gammaCounter;
+
     int scinCounter;
+   
+   double energy2;
 };
 
 #endif

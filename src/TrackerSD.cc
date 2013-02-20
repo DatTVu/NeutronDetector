@@ -37,16 +37,21 @@ HCE->AddHitsCollection(HCID,trackerCollection);
 G4bool TrackerSD::ProcessHits(G4Step* aStep,G4TouchableHistory*)
 {
 if (aStep == 0) return false;
-if (aStep->GetTrack()->GetDynamicParticle()->GetDefinition()->GetParticleName() == "opticalphoton")
-
+//G4Track* theTrack = aStep->GetTrack();
+//if (aStep->GetTrack()->GetCurrentStepNumber() >= 0) 
+if (aStep->GetTrack()->GetDynamicParticle()->GetDefinition() !=G4OpticalPhoton::OpticalPhotonDefinition())
+//->GetParticleName() == "alpha")
+//if(theTrack->GetDefinition()!=G4OpticalPhoton::OpticalPhotonDefinition())
  {
 		
 		TrackerHit* newHit = new TrackerHit();
-                /*cname = aStep->GetTrack()->GetCreatorProcess()->GetProcessName();*/
-                ke = aStep->GetTrack()->GetKineticEnergy();
-		/*name = aStep->GetTrack()->GetDynamicParticle()->GetDefinition()->GetParticleName();*/
-                            
- 		trackerCollection->insert(newHit );
+		          
+		newHit->SetTrackID(aStep->GetTrack()->GetTrackID());
+		newHit->SetPos(aStep->GetPostStepPoint()->GetPosition());
+		newHit->SetID(aStep->GetTrack()->GetDynamicParticle()->GetDefinition()->GetParticleName());
+		energy=aStep->GetTrack()->GetKineticEnergy();
+		newHit->SetEn(energy);
+                trackerCollection->insert(newHit);
 	}		
 else
 	{
@@ -72,11 +77,11 @@ void TrackerSD::EndOfEvent(G4HCofThisEvent*)
   /*fout.open("alphadata100MeV_run13.txt", std::fstream::app);
 	fout <<name<< " "<<std::endl;;*/
   fout.close();
-  fout.open("numberdata_run15.txt", std::fstream::app);
+  fout.open("numberdata_run21.txt", std::fstream::app);
 	fout <<NbHits<< " "<<std::endl;;
   fout.close();
-  fout.open("energydata_run15.txt", std::fstream::app);
-	fout <<ke/eV<< " "<<std::endl;;
+  fout.open("energydata_run21.txt", std::fstream::app);
+	fout <<energy/MeV<< " "<<std::endl;;
   fout.close();
 }
 

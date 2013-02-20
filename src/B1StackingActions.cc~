@@ -15,9 +15,9 @@ B1StackingAction::~B1StackingAction()
 G4ClassificationOfNewTrack
 B1StackingAction::ClassifyNewTrack(const G4Track * aTrack)
 {
-  if(aTrack->GetDefinition()==G4OpticalPhoton::OpticalPhotonDefinition())
+  if(aTrack->GetDefinition()==G4Alpha::AlphaDefinition())
   { // particle is optical photon
-    if(aTrack->GetParentID()>0)
+   // if(aTrack->GetParentID()>0)
     /*{ // particle is secondary
     if(aTrack->GetCreatorProcess()->GetProcessName()=="Scintillation")
 	{scinCounter++;}
