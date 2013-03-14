@@ -114,7 +114,7 @@ PTP->AddElement(H , natoms=14);
   myMPT1->AddConstProperty("SLOWTIMECONSTANT",3.7*ns);
   myMPT1->AddConstProperty("YIELDRATIO",0.8);
   
-  PTP->SetMaterialPropertiesTable(myMPT1);
+ GlassB ->SetMaterialPropertiesTable(myMPT1);
 
 }
 

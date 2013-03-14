@@ -2,6 +2,8 @@
 #define B1StackingAction_H 1
 
 #include "G4UserStackingAction.hh"
+#include <vector>
+
 
 class B1StackingAction : public G4UserStackingAction
 {
@@ -15,11 +17,10 @@ class B1StackingAction : public G4UserStackingAction
     virtual void PrepareNewEvent();
 
   private:
-    int gammaCounter;
+    //int gammaCounter;
 
     int scinCounter;
-   
-   double energy2;
-};
+  std::vector<float> gamma_e;
+ };
 
 #endif

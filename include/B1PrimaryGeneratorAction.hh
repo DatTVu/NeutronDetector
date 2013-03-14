@@ -10,9 +10,7 @@ class G4Event;
 class B1DetectorConstruction;
 
 /// The primary generator action class with particle gum.
-///
-/// The default kinematic is a 6 MeV gamma, randomly distribued 
-/// in front of the phantom across 80% of the (X,Y) phantom size.
+
 
 class B1PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
 {

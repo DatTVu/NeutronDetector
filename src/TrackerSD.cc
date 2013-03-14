@@ -63,26 +63,26 @@ return true;
 //...................................................................................
 void TrackerSD::EndOfEvent(G4HCofThisEvent*)
 {
-    	G4int NbHits = trackerCollection->entries();
+    	/*G4int NbHits = trackerCollection->entries();
    
 	aCount += NbHits;
 	for (G4int i=0;i<NbHits;i++) 
 	{
 		(*trackerCollection)[i]->Print();
 	}
-	std::ofstream fout;
+	std::ofstream fout;*/
   /*fout.open("process_run14.txt", std::fstream::app);
   fout <<cname<< " " <<std::endl;;
   fout.close();*/
   /*fout.open("alphadata100MeV_run13.txt", std::fstream::app);
 	fout <<name<< " "<<std::endl;;*/
-  fout.close();
-  fout.open("numberdata_run21.txt", std::fstream::app);
+  /*fout.close();
+  fout.open("numberdata_run22.txt", std::fstream::app);
 	fout <<NbHits<< " "<<std::endl;;
   fout.close();
-  fout.open("energydata_run21.txt", std::fstream::app);
+  fout.open("energydata_run22.txt", std::fstream::app);
 	fout <<energy/MeV<< " "<<std::endl;;
-  fout.close();
+  fout.close();*/
 }
 
 void TrackerSD::DrawAll()

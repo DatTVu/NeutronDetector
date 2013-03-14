@@ -2,6 +2,8 @@
 #define B1StackingAction_H 1
 
 #include "G4UserStackingAction.hh"
+#include <vector>
+
 
 class B1StackingAction : public G4UserStackingAction
 {
@@ -16,6 +18,9 @@ class B1StackingAction : public G4UserStackingAction
 
   private:
     int gammaCounter;
-};
+
+    int scinCounter;
+  std::vector<float> gamma_e;
+ };
 
 #endif
